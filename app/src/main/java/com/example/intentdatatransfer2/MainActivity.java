@@ -43,4 +43,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // SubActivityからの返しのし結果を受け取る
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if(resultCode == RESULT_OK && requestCode == RESULT_SUBACTIVITY &&
+            null != intent){
+            String res = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+            textView.setText(res);
+        }
+    }
 }
